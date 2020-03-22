@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PersonTypeMenuComponent } from './person-type-menu.component';
+import { PeopleRoleMenuComponent } from './people-role-menu.component';
 
-describe('PersonTypeMenuComponent', () => {
-  let component: PersonTypeMenuComponent;
-  let fixture: ComponentFixture<PersonTypeMenuComponent>;
+describe('PeopleRoleMenuComponent', () => {
+  let component: PeopleRoleMenuComponent;
+  let fixture: ComponentFixture<PeopleRoleMenuComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PersonTypeMenuComponent ]
+      declarations: [ PeopleRoleMenuComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PersonTypeMenuComponent);
+    fixture = TestBed.createComponent(PeopleRoleMenuComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

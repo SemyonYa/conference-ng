@@ -1,5 +1,3 @@
-import { PersonRole } from './person-role';
-
 export class Person {
     id: number;
     surname: string;
@@ -10,9 +8,7 @@ export class Person {
     organization: string;
     photo: string;
 
-    personRole: PersonRole;
-
-    constructor(id: string, surname: string, name: string, name2: string, vocation: string, info: string, organization: string, photo: string, personRole: PersonRole) {
+    constructor(id: string, surname: string, name: string, name2: string, vocation: string, info: string, organization: string, photo: string) {
         this.id - Number.parseInt(id);
         this.surname = surname;
         this.name = name;
@@ -21,6 +17,5 @@ export class Person {
         this.info = info;
         this.organization = organization;
         this.photo = photo;
-        this.personRole = personRole;
     }
 }

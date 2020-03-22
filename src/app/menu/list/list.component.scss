@@ -5,4 +5,8 @@ app-item {
     justify-content: center;
     align-items: center;
     cursor: pointer;
+
+    &.active {
+        background-color: darkred;
+    }
 }

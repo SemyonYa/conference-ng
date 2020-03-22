@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Person } from 'src/app/_models/person';
 
 @Component({
   selector: 'app-person-list',
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./person-list.component.scss']
 })
 export class PersonListComponent implements OnInit {
-
+  @Input() people: Person[];
   constructor() { }
 
   ngOnInit(): void {

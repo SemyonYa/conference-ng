@@ -5,6 +5,7 @@ import { PeopleIndexComponent } from './people/people-index/people-index.compone
 import { ScheduleTableComponent } from './schedule/schedule-table/schedule-table.component';
 import { PresentationListComponent } from './presentations/presentation-list/presentation-list.component';
 import { PhotoListComponent } from './galery/photo-list/photo-list.component';
+import { PresentationFullComponent } from './presentations/presentation-full/presentation-full.component';
 
 
 const routes: Routes = [
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'people', component: PeopleIndexComponent },
   { path: 'schedule', component: ScheduleTableComponent },
   { path: 'presentation', component: PresentationListComponent },
+  { path: 'presentation/:id', component: PresentationFullComponent },
   { path: 'galery', component: PhotoListComponent}
 ];
 

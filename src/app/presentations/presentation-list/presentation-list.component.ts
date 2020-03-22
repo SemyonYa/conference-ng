@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { PresentationCollection } from 'src/app/_models/presentation-collection';
+import { DataService } from 'src/app/_services/data.service';
 
 @Component({
   selector: 'app-presentation-list',
@@ -6,10 +8,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./presentation-list.component.scss']
 })
 export class PresentationListComponent implements OnInit {
+  collection = new PresentationCollection();
+  constructor(private dataService: DataService) { }
 
-  constructor() { }
-
-  ngOnInit(): void {
+  ngOnInit() {
+    this.dataService.presentationCollection$
+      .subscribe(
+        data => { this.collection = data }
+      );
   }
 
 }

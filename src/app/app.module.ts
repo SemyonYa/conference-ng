@@ -7,11 +7,11 @@ import { AppComponent } from './app.component';
 import { ListComponent } from './menu/list/list.component';
 import { ItemComponent } from './menu/item/item.component';
 import { HeaderComponent } from './header/header.component';
-import { PersonTypeMenuComponent } from './people/person-type-menu/person-type-menu.component';
+import { PeopleIndexComponent } from './people/people-index/people-index.component';
+import { PeopleRoleMenuComponent } from './people/people-role-menu/people-role-menu.component';
 import { PersonListComponent } from './people/person-list/person-list.component';
 import { PersonItemComponent } from './people/person-item/person-item.component';
 import { HomeComponent } from './home/home.component';
-import { PeopleIndexComponent } from './people/people-index/people-index.component';
 import { BodyComponent } from './body/body.component';
 import { ScheduleTableComponent } from './schedule/schedule-table/schedule-table.component';
 import { ScheduleInfoComponent } from './schedule/schedule-info/schedule-info.component';
@@ -25,6 +25,7 @@ import { PresentationFullMarksComponent } from './presentations/presentation-ful
 import { PhotoListComponent } from './galery/photo-list/photo-list.component';
 import { PhotoItemComponent } from './galery/photo-item/photo-item.component';
 import { DataService } from './_services/data.service';
+import { PresentationFullDocComponent } from './presentations/presentation-full-doc/presentation-full-doc.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,7 @@ import { DataService } from './_services/data.service';
     ItemComponent,
     HeaderComponent,
     PeopleIndexComponent,
-    PersonTypeMenuComponent,
+    PeopleRoleMenuComponent,
     PersonListComponent,
     PersonItemComponent,
     HomeComponent,
@@ -48,7 +49,8 @@ import { DataService } from './_services/data.service';
     PresentationFullPersonComponent,
     PresentationFullMarksComponent,
     PhotoListComponent,
-    PhotoItemComponent
+    PhotoItemComponent,
+    PresentationFullDocComponent,
   ],
   imports: [
     BrowserModule,
@@ -61,6 +63,11 @@ import { DataService } from './_services/data.service';
 export class AppModule {
   constructor(private dataService: DataService) {
     this.dataService.getPeople();
-    dataService.people$.subscribe((data) => {console.log('people', data)});
+    this.dataService.getSchedule();
+    this.dataService.getPresentations();
+
+    dataService.rolesWithPeople$.subscribe(data => { console.log('people', data) });
+    dataService.scheduleDates$.subscribe(data => { console.log('schedule', data) });
+    dataService.presentationCollection$.subscribe(data => { console.log('presentationCollection', data) });
   }
- }
+}

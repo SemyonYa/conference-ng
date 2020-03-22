@@ -1,1 +1,21 @@
-<p>schedule-table works!</p>
+<div class="table-wrap">
+  <h2>Расписание</h2>
+  <table>
+    <tbody *ngFor="let schDate of scheduleDates">
+      <tr class="date">
+        <td colspan="3">{{schDate.date | date:"dd.MM.yyyy"}}</td>
+      </tr>
+      <tr *ngFor="let sch of schDate.schedules">
+        <td>{{sch.time.hours | number:'2.0'}} : {{ sch.time.minutes | number:'2.0'}}</td>
+        <td>
+          <p><strong>{{sch.name}}</strong></p>
+          <p>{{sch.place}}</p>
+        </td>
+        <td>
+          <span *ngIf="sch.presentations.length > 0">info</span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>

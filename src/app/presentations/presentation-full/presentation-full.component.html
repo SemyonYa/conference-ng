@@ -1,1 +1,6 @@
-<p>presentation-full works!</p>
+<h4>{{presentation?.name}}</h4>
+<h5><strong>{{presentation?.organization}}</strong></h5>
+<p>{{presentation?.description}}</p>
+<div class="docs">
+    <app-presentation-full-doc *ngFor="let doc of presentation?.docs" [doc]="doc"></app-presentation-full-doc>
+</div>

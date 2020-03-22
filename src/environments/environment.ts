@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  api: 'http://conference:88/data'
+  api: 'http://data.conference/data'
 };
 
 /*

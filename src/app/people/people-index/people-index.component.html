@@ -1,1 +1,4 @@
-<p>people-index works!</p>
+<h3>Участники конференции</h3>
+<!-- <pre>{{rolesWithPeople | json}}</pre> -->
+<app-people-role-menu [roles]="rolesWithPeople" (activate)="activateFromChild($event)"></app-people-role-menu>
+<app-person-list [people]="activeRole?.people"></app-person-list>

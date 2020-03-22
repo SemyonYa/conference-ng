@@ -1,1 +1,8 @@
-<p>presentation-list works!</p>
+<h2>Доклады</h2>
+<div class="section" *ngFor="let section of collection.sections">
+    <h3>{{section.name}}</h3>
+    <app-presentation-item *ngFor="let presentation of section.presentations" [presentation]="presentation" [routerLink]="['/presentation/' + presentation.id]"></app-presentation-item>
+</div>
+<div class="section">
+    <app-presentation-item *ngFor="let presentation of collection.zero" [presentation]="presentation" [routerLink]="['/presentation/' + presentation.id]"></app-presentation-item>
+</div>
