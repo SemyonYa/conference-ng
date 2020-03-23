@@ -19,7 +19,6 @@ import { PresentationListComponent } from './presentations/presentation-list/pre
 import { PresentationItemComponent } from './presentations/presentation-item/presentation-item.component';
 import { PresentationFullComponent } from './presentations/presentation-full/presentation-full.component';
 import { PresentationFullInfoComponent } from './presentations/presentation-full-info/presentation-full-info.component';
-import { PresentationFullPeopleComponent } from './presentations/presentation-full-people/presentation-full-people.component';
 import { PresentationFullPersonComponent } from './presentations/presentation-full-person/presentation-full-person.component';
 import { PresentationFullMarksComponent } from './presentations/presentation-full-marks/presentation-full-marks.component';
 import { PhotoListComponent } from './galery/photo-list/photo-list.component';
@@ -45,7 +44,6 @@ import { PresentationFullDocComponent } from './presentations/presentation-full-
     PresentationItemComponent,
     PresentationFullComponent,
     PresentationFullInfoComponent,
-    PresentationFullPeopleComponent,
     PresentationFullPersonComponent,
     PresentationFullMarksComponent,
     PhotoListComponent,

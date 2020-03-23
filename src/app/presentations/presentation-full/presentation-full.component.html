@@ -1,6 +1,11 @@
-<h4>{{presentation?.name}}</h4>
-<h5><strong>{{presentation?.organization}}</strong></h5>
-<p>{{presentation?.description}}</p>
-<div class="docs">
-    <app-presentation-full-doc *ngFor="let doc of presentation?.docs" [doc]="doc"></app-presentation-full-doc>
+<div class="wrap">
+
+    <app-presentation-full-info [presentation]="presentation"></app-presentation-full-info>
+    <div class="docs">
+        <app-presentation-full-doc *ngFor="let doc of presentation?.docs" [doc]="doc"></app-presentation-full-doc>
+    </div>
+    <div class="people">
+        <app-presentation-full-person *ngFor="let person of presentation?.people" [person]="person"></app-presentation-full-person>
+    </div>
+    <app-presentation-full-marks [ratingsWithMark]="ratingsWithMark"></app-presentation-full-marks>
 </div>

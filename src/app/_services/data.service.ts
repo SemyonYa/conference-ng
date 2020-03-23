@@ -11,6 +11,9 @@ import { Presentation } from '../_models/presentation';
 import { PresentationCollection } from '../_models/presentation-collection';
 import { Section } from '../_models/section';
 import { Doc } from '../_models/doc';
+import { Rating } from '../_models/rating';
+import { Mark } from '../_models/mark';
+import { RatingsWithMark } from '../_models/ratings-with-mark';
 
 @Injectable({
   providedIn: 'root'
@@ -74,10 +77,25 @@ export class DataService {
       .pipe(
         map(
           (p: any) => {
-            let presentation = new Presentation(p.presentation.id, p.presentation.name, p.presentation.description, p.presentation.organization, p.presentation.is_current);
-            presentation.people = (p.presentation.people as any[]).map(person => new Person(person.id, person.surname, person.name, person.name_2, person.vocation, person.info, person.organization, person.photo));
-            presentation.docs = (p.presentation.docs as any[]).map(d => new Doc(d.id, d.name, d.description, d.path, d.extension));
+            let presentation = new Presentation(p.id, p.name, p.description, p.organization, p.is_current);
+            presentation.people = (p.people as any[]).map(person => new Person(person.id, person.surname, person.name, person.name_2, person.vocation, person.info, person.organization, person.photo));
+            presentation.docs = (p.docs as any[]).map(d => new Doc(d.id, d.name, d.description, d.path, d.extension));
             return presentation;
+          }
+        )
+      );
+  }
+
+  getRatingsWithMark(presentationId) {
+    return this.http.get(environment.api + '/ratings?presentation_id=' + presentationId)
+      .pipe(
+        map(
+          (data: any) => {
+            const rwm: RatingsWithMark = {
+              ratings: (data.ratings as any[]).map(r => new Rating(r.id, r.level, r.name)),
+              mark: data.mark ? new Mark(data.mark.id, data.mark.rating_id, data.mark.description) : null
+            }
+            return rwm;
           }
         )
       );
