@@ -1,1 +1,1 @@
-<app-person-item *ngFor="let personItem of people" [person]="personItem"></app-person-item>
+<app-person-item *ngFor="let personItem of people" [person]="personItem" @translateScaleAnimation (click)="showPerson(personItem)"></app-person-item>

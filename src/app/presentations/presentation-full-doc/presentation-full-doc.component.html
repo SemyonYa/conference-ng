@@ -1,1 +1,4 @@
-{{doc.name}}
+<div class="wrap" (click)="showDoc(doc)">
+    <div class="icon" [ngStyle]="{backgroundImage: 'url(' + icons.get(doc.extension) + ')'}"></div>
+    <span>{{doc.name}}</span>
+</div>

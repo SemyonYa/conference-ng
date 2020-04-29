@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { Person } from '../_models/person';
 import { BehaviorSubject, Observable } from 'rxjs';
@@ -13,7 +13,9 @@ import { Section } from '../_models/section';
 import { Doc } from '../_models/doc';
 import { Rating } from '../_models/rating';
 import { Mark } from '../_models/mark';
-import { RatingsWithMark } from '../_models/ratings-with-mark';
+import { Photo } from '../_models/photo';
+import { User } from '../_models/user';
+import { ReportPresentation } from '../_models/report-presentation';
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +24,39 @@ export class DataService {
   rolesWithPeople$ = new BehaviorSubject<PersonRole[]>([]);
   scheduleDates$ = new BehaviorSubject<ScheduleDate[]>([]);
   presentationCollection$ = new BehaviorSubject<PresentationCollection>(new PresentationCollection());
+  photos$ = new BehaviorSubject<Photo[]>([]);
+  ratings$ = new BehaviorSubject<Rating[]>([]);
   constructor(private http: HttpClient) { }
+
+  init(personId) {
+    this.getPeople();
+    this.getSchedule();
+    this.getPresentations();
+    if (personId) {
+      this.getPhotos(personId);
+      this.getRatings();
+    }
+  }
+
+  login(formData: any) {
+    return this.http.post<User | boolean>(environment.auth + '/login', formData)
+      .pipe(
+        map(
+          (data: any) => {
+            if (data == false) {
+              return false;
+            } else {
+              return data;
+              // return User.create(data.id, data.login, formData.password, data.password_hash, data.role_id, data.person?.id, data.person?.surname, data.person?.name, data.person?.name_2);
+            }
+          }
+        )
+      );
+  }
+
+  refreshing(refreshToken: string) {
+    return this.http.post(environment.auth + '/refreshing', { refreshToken });
+  }
 
   getPeople() {
     this.http.get(environment.api + '/people')
@@ -86,17 +120,68 @@ export class DataService {
       );
   }
 
-  getRatingsWithMark(presentationId) {
-    return this.http.get(environment.api + '/ratings?presentation_id=' + presentationId)
+  setCurrentPresentation(id: number, isCurrent: boolean) {
+    return this.http.get(`${environment.api}/set-current-presentation?id=${id}&is_current=${isCurrent ? 1 : 0}`);
+  }
+
+  getRatings() {
+    return this.http.get<Rating[]>(environment.api + '/ratings')
+      .subscribe(
+        (data: any[]) => {
+          this.ratings$.next(data.map(r => new Rating(r.id, r.level, r.name)));
+        }
+      );
+  }
+
+  getMark(presentationId: number, juryId: number) {
+    return this.http.get<Mark>(environment.api + '/mark?presentation_id=' + presentationId + '&jury_id=' + juryId)
       .pipe(
         map(
-          (data: any) => {
-            const rwm: RatingsWithMark = {
-              ratings: (data.ratings as any[]).map(r => new Rating(r.id, r.level, r.name)),
-              mark: data.mark ? new Mark(data.mark.id, data.mark.rating_id, data.mark.description) : null
-            }
-            return rwm;
-          }
+          (data: any) => data ? Mark.create(data.id, data.rating_id, data.description, presentationId, juryId) : new Mark(presentationId, juryId)
+        )
+      );
+  }
+
+  setMark(mark: Mark) {
+    return this.http.post(environment.api + '/set-mark', { mark });
+  }
+
+  getPhotos(personId: number) {
+    this.http.get<Photo[]>(environment.api + '/galery?person_id=' + personId)
+      .subscribe(
+        (data: any[]) => {
+          let no = 1;
+          this.photos$.next(data.map(p => new Photo(p.id, p.name, p.title, p.count, p.my_like, no++)));
+        }
+      );
+  }
+
+  likePhoto(personId: number, photoId: number) {
+    this.http.post(environment.api + '/like', { personId, photoId })
+      .subscribe(
+        resp => {
+          if (resp) this.getPhotos(personId);
+        }
+      );
+  }
+
+  reportData() {
+    return this.http.get<ReportPresentation[]>(environment.api + '/report-data')
+      .pipe(
+        map(
+          (data: any[]) => data.map(p => {
+            let reportPresentation: ReportPresentation = new ReportPresentation();
+            reportPresentation.presentationId = Number.parseInt(p.presentation.id);
+            reportPresentation.presentationName = p.presentation.name;
+            reportPresentation.personMarks = (p.person_marks as any[]).map(pm => {
+              return {
+                personId: pm.person.id,
+                personFio: pm.person.surname + '' + pm.person.name + ' ' + pm.person.name_2,
+                mark: Mark.create(pm.mark?.id, pm.mark?.rating_id, pm.mark?.description, pm.mark?.presentation_id, pm.mark?.jury_id, this.ratings$.value.find(r => r.id == pm.mark?.rating_id))
+              };
+            });
+            return reportPresentation;
+          })
         )
       );
   }

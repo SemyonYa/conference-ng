@@ -1,0 +1,6 @@
+<div class="is-current-wrap">
+  <label for="is-current" [ngClass]="{'on': presentation.isCurrent}">
+    <input type="checkbox" [checked]="presentation.isCurrent" id="is-current" (change)="change($event)">
+    <span>Текущая презентация</span>
+  </label>
+</div>

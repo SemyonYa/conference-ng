@@ -1,1 +1,4 @@
-    {{presentation | json}}
+<div [ngClass]="{'wrap': true, 'current': presentation.isCurrent}">
+    <h5>{{presentation.name}}</h5>
+    <h6>{{presentation.organization}}</h6>
+</div>

@@ -4,7 +4,11 @@
 
 export const environment = {
   production: false,
-  api: 'http://data.conference/data'
+  api: 'http://data.conference/data',
+  auth: 'http://data.conference/auth',
+  photoPath: 'http://data.conference/web/galery/',
+  imagePath: 'http://data.conference/web/images/',
+  docPath: 'http://data.conference/web/docs/',
 };
 
 /*

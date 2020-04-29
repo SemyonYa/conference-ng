@@ -3,11 +3,10 @@
   justify-content: center;
   flex-wrap: wrap;
   padding: 20px 0 50px;
-}
 
-h2 {
-  flex-basis: 100%;
-  text-align: center;
+  &>* {
+    flex-basis: 100%;
+  }
 }
 
 table {
@@ -21,11 +20,28 @@ table {
   }
 
   tr {
-    color: darkred;
+    color: var(--color-primary);
+    border-bottom: solid 1px var(--color-secondary);
 
     &.date {
-      background-color: darkred;
+      background-color: var(--color-primary);
       color: whitesmoke;
+    }
+  }
+
+  .info {
+    width: 35px;
+    height: 35px;
+    background-image: url('/assets/svg/documents.svg');
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+    transition: .3s;
+    cursor: pointer;
+
+    &:hover {
+      // filter: drop-shadow(0px 1px 0px var(--color-primary));
+      filter: hue-rotate(178deg) saturate(117%) brightness(46%);
     }
   }
 }

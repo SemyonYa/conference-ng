@@ -1,6 +1,26 @@
+.wrap {
+  width: 100%;
+  padding: 20px 0 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+
+  &>* {
+    flex-basis: 100%;
+  }
+}
+
+app-people-role-menu {
+  display: flex;
+  justify-content: center;
+  // align-items: center;
+
+}
+
 app-person-list {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
 }

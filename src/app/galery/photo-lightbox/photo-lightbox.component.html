@@ -1,0 +1,8 @@
+<div class="back" (click)="close()"></div>
+<!-- <div class="photo" [ngStyle]="{backgroundImage: 'url(' + activePhoto.wide() + ')'}"></div> -->
+<div>
+  <img class="photo" [src]="activePhoto.wide()" #photoElem alt="hueta" (load)="setPosition()">
+  <div class="prev" #prev (click)="toggle('-')"></div>
+  <div class="next" #next (click)="toggle('+')"></div>
+  <div class="close" #closeBtn (click)="close()">Закрыть</div>
+</div>

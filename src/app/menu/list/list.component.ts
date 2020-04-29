@@ -11,10 +11,10 @@ export class ListComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.menu.push(new MenuItem('Участники', 'user', 'people'));
-    this.menu.push(new MenuItem('Расписание', 'user', 'schedule'));
-    this.menu.push(new MenuItem('Доклады', 'user', 'presentation'));
-    this.menu.push(new MenuItem('Фото', 'user', 'galery'));
+    this.menu.push(new MenuItem('Участники', '/assets/svg/people.svg', 'people'));
+    this.menu.push(new MenuItem('Расписание', '/assets/svg/alarm.svg', 'schedule'));
+    this.menu.push(new MenuItem('Доклады', '/assets/svg/documents.svg', 'presentation'));
+    this.menu.push(new MenuItem('Фото', '/assets/svg/images.svg', 'galery'));
   }
 
 }

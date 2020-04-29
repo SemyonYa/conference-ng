@@ -1,8 +1,13 @@
-<h2>Доклады</h2>
-<div class="section" *ngFor="let section of collection.sections">
+<div class="wrap" @translateYAnimation>
+  <h2 class="title">Доклады</h2>
+  <app-presentation-list-reports *ngIf="isCompere"></app-presentation-list-reports>
+  <div class="section" *ngFor="let section of collection.sections">
     <h3>{{section.name}}</h3>
-    <app-presentation-item *ngFor="let presentation of section.presentations" [presentation]="presentation" [routerLink]="['/presentation/' + presentation.id]"></app-presentation-item>
-</div>
-<div class="section">
-    <app-presentation-item *ngFor="let presentation of collection.zero" [presentation]="presentation" [routerLink]="['/presentation/' + presentation.id]"></app-presentation-item>
+    <app-presentation-item *ngFor="let presentation of section.presentations" [presentation]="presentation"
+      [routerLink]="['/presentation/' + presentation.id]"></app-presentation-item>
+  </div>
+  <div class="section">
+    <app-presentation-item *ngFor="let presentation of collection.zero" [presentation]="presentation"
+      [routerLink]="['/presentation/' + presentation.id]"></app-presentation-item>
+  </div>
 </div>

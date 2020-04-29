@@ -7,6 +7,5 @@ import { MenuItem } from 'src/app/_models/menu-item';
   styleUrls: ['./item.component.scss']
 })
 export class ItemComponent {
-  @Input() menuItem: MenuItem;
-  constructor() { }
+  @Input() item: MenuItem;
 }

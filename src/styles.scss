@@ -1,1 +1,152 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  --color-primary: rgb(0, 79, 119);
+  --color-primary-light: rgb(182, 202, 218);
+  --color-primary-dark: rgb(0, 63, 95);
+  --color-primary-rgb: 0, 79, 119;
+
+  // --color-primary: hsl(200, 100%, 23%);
+  // --color-secondary: hsl(22, 83%, 77%);
+  //   filter: hue-rotate(178deg) saturate(117%) brightness(46%);
+
+
+  --color-secondary: rgb(245, 184, 149);
+  --color-secondary-rgb: 245, 184, 149;
+  --color-secondary-light: rgb(244, 219, 179);
+
+  --color-success: rgb(37, 89, 88);
+  --color-success-rgb: 37, 89, 88;
+  --color-danger: rgb(119, 32, 47);
+  --color-danger-rgb: 119, 32, 47;
+  --color-grey: rgb(122, 131, 135);
+  --color-lightgrey: rgb(240, 240, 240);
+  --color-back-rgb: 253, 253, 253;
+
+  --modal-dialog-max-width: 350px;
+
+  --font-family: 'Cormorant Garamond', serif !important;
+  // --font-family-sans-serif: 'Cormorant Garamond', serif !important;
+  // --font-family-monospace: 'Cormorant Garamond', serif !important;
+  font-size: 18px;
+
+  body {
+    font-family: var(--font-family);
+  }
+
+  // --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  // --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+* {
+  outline: none;
+}
+
+.title {
+  text-align: center;
+  text-transform: uppercase;
+  color: var(--color-primary);
+}
+
+.modal-350 {
+  &.modal-dialog {
+    max-width: var(--modal-dialog-max-width);
+  }
+}
+
+.modal-doc {
+  &.modal-dialog {
+    max-width: 95vw;
+    height: calc(100vh - 3.5rem);
+
+    .modal-content {
+      height: 100%;
+      // overflow-y: scroll;
+      border-radius: 4px;
+
+      &>* {
+        height: 100%;
+      }
+    }
+  }
+}
+
+.mark-popover {
+  text-align: center;
+  .popover-header {
+    font-size: 11px;
+    background-color: transparent;
+  }
+  .popover-title {
+    color: var(--color-primary);
+  }
+  p {
+    margin: 0;
+    font-size: 11px;
+  }
+}
+
+input.ng-touched.ng-invalid {
+  border-color: var(--color-danger) !important;
+  box-shadow: 0 0 3px 1px rgba(var(--color-danger-rgb), .5) !important;
+}
+
+input.ng-touched.ng-valid {
+  border-color: var(--color-primary) !important;
+  box-shadow: inset 0 0 2px 1px rgba(var(--color-primary-rgb), .5) !important;
+}
+
+.btn {
+  padding: 2px 13px;
+}
+
+.btn-outline-primary {
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.btn-outline-primary:hover {
+  color: #fff;
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.btn-outline-primary:not(:disabled):not(.disabled).active,
+.btn-outline-primary:not(:disabled):not(.disabled):active,
+.show>.btn-outline-primary.dropdown-toggle {
+  color: #fff;
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.btn-outline-primary.focus,
+.btn-outline-primary:focus,
+.btn-outline-primary:not(:disabled):not(.disabled).active:focus,
+.btn-outline-primary:not(:disabled):not(.disabled):active:focus,
+.show>.btn-outline-primary.dropdown-toggle:focus {
+  box-shadow: 0 0 10px 0 rgba(var(--color-primary-rgb), .5);
+}
+
+/*
+    scroll
+*/
+::-webkit-scrollbar {
+  width: 5px;
+  height: 15px;
+}
+
+::-webkit-scrollbar-button:start:decrement,
+::-webkit-scrollbar-button:end:increment {
+  width: 10px;
+  display: block;
+  background-color: rgba(var(--color-secondary-rgb), 0.5);
+}
+
+::-webkit-scrollbar-track-piece {
+  background-color: rgba(var(--color-secondary-rgb), 0.3);
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb:vertical,
+::-webkit-scrollbar-thumb:horizontal {
+  height: 5px;
+  background-color: var(--color-secondary);
+}

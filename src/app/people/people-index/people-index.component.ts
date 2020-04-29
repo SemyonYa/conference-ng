@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { PersonRole } from 'src/app/_models/person-role';
 import { DataService } from 'src/app/_services/data.service';
+import { translateYAnimation } from 'src/app/_animations/translate-y.animation';
 
 @Component({
   selector: 'app-people-index',
   templateUrl: './people-index.component.html',
-  styleUrls: ['./people-index.component.scss']
+  styleUrls: ['./people-index.component.scss'],
+  animations: [translateYAnimation]
 })
 export class PeopleIndexComponent implements OnInit {
   rolesWithPeople: PersonRole[] = [];

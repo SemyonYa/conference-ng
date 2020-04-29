@@ -1,1 +1,1 @@
-<p *ngFor="let role of roles" (click)="activateRole(role.id)">{{role.name}}</p>
+<div *ngFor="let role of roles" (click)="activateRole(role.id)" [ngClass]="{'role': true, 'active': role.id === activeRoleId}">{{role.name}}</div>

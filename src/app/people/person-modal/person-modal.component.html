@@ -1,0 +1,12 @@
+<div class="wrap">
+    <div class="photo" [ngStyle]="{backgroundImage: 'url(' + person.thumb + ')'}"></div>
+    <div class="fio">
+        <p><strong>{{person.surname}}</strong></p>
+        <p>{{person.name + ' ' + person.name2}}</p>
+    </div>
+    <div class="org">{{person.organization}}</div>
+    <div class="vocation">{{person.vocation}}</div>
+    <div class="info">{{person.info}}</div>
+    <div class="footer" (click)="bsModalRef.hide()">Закрыть</div>
+</div>
+

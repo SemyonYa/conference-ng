@@ -1,1 +1,8 @@
-<p>photo-list works!</p>
+<div class="wrap" @translateYAnimation>
+  <h2 class="title">Галерея</h2>
+  <div class="wrap">
+    <app-photo-item *ngFor="let photo of photos" [photo]="photo" (openLightbox)="openLightbox($event)" (likePhoto)="likePhoto($event)"></app-photo-item>
+  </div>
+  <app-photo-lightbox [activePhoto]="activePhoto" (closeLightbox)="closeLightbox()"
+  (toggleLightbox)="toggleLightbox($event)" *ngIf="activePhoto" @lightboxOnOffAnimation></app-photo-lightbox>
+</div>

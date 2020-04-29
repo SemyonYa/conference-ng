@@ -1,1 +1,5 @@
-<p [routerLink]="['/']">header works!</p>
+<div class="wrap">
+    <div [routerLink]="['/']" class="home"></div>
+    <div class="app-name">{{title}}</div>
+    <div class="user" (click)="logout()"></div>
+</div>

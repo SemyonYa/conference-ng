@@ -1,0 +1,15 @@
+<div class="wrap">
+    <div class="header">
+        <p class="date">{{sch.date | date:"dd.MM.yyyy"}}</p>
+        <p class="time">{{sch.time.hours | number:'2.0'}} : {{ sch.time.minutes | number:'2.0'}}</p>
+    </div>
+    <div class="info">
+        <h4>{{sch.place}}</h4>
+        <app-presentation-item *ngFor="let presentation of sch.presentations" [presentation]="presentation" [routerLink]="['/presentation/' + presentation.id]"></app-presentation-item>
+    </div>
+    <div class="footer" (click)="bsModalRef.hide()">
+        Закрыть
+    </div>
+</div>
+<!-- <p> -->
+<!-- </p> -->

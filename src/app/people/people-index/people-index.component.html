@@ -1,4 +1,5 @@
-<h3>Участники конференции</h3>
-<!-- <pre>{{rolesWithPeople | json}}</pre> -->
-<app-people-role-menu [roles]="rolesWithPeople" (activate)="activateFromChild($event)"></app-people-role-menu>
-<app-person-list [people]="activeRole?.people"></app-person-list>
+<div class="wrap" @translateYAnimation>
+  <h3 class="title">Участники конференции</h3>
+  <app-people-role-menu [roles]="rolesWithPeople" [activeRoleId]="activeRole?.id" (activate)="activateFromChild($event)"></app-people-role-menu>
+  <app-person-list [people]="activeRole?.people"></app-person-list>
+</div>

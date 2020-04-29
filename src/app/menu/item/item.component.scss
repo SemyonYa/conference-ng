@@ -1,0 +1,27 @@
+.wrap {
+  border: solid 1px var(--color-lightgrey);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--color-primary);
+  outline: none;
+  height: 100%;
+  transition: .5s;
+  cursor: pointer;
+
+  &.active {
+    background-color: var(--color-primary);
+    color: var(--color-secondary);
+  }
+
+  .icon {
+      width: 35px;
+      height: 35px;
+      margin-right: 10px;
+  }
+
+  .name {
+      text-transform: uppercase;
+      font-weight: 600;
+  }
+}

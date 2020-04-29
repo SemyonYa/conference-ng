@@ -1,0 +1,27 @@
+.is-current-wrap {
+  flex-basis: 100%;
+
+  label {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    line-height: 1;
+    border-radius: 7px;
+    min-width: 300px;
+    padding: 7px;
+    transition: .3s;
+
+    &.on {
+      font-weight: 600;
+      color: var(--color-primary);
+    }
+
+    input[type=checkbox] {
+      zoom: 2;
+    }
+
+    span {
+      padding: 0 7px;
+    }
+  }
+}

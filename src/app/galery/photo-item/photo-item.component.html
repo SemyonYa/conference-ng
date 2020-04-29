@@ -1,1 +1,4 @@
-<p>photo-item works!</p>
+<div class="photo" [ngStyle]="{backgroundImage: 'url(' + photo.thumb() + ')'}" (click)="open(photo.no)"></div>
+<span class="like on" *ngIf="photo.myLike" (click)="like(photo.id)">&hearts; {{photo.likesCount}}</span>
+<span class="like off" *ngIf="!photo.myLike" (click)="like(photo.id)">&#9825; {{photo.likesCount}}</span>
+     

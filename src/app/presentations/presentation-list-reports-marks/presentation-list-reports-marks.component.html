@@ -1,0 +1,26 @@
+<div class="wrap">
+  <div class="header">
+    <div class="name">Просмотр поставленных оценок</div>
+    <div class="close" (click)="bsModalRef.hide()"></div>
+  </div>
+  <div class="doc-wrap">
+    <table class="table">
+      <tr *ngFor="let repPre of reportPresentations">
+        <td>{{repPre.presentationName}}</td>
+        <td *ngFor="let personMark of repPre.personMarks" title="{{personMark.personFio}}" [popover]="infoPopover" popoverTitle="{{personMark.personFio}}" [outsideClick]="true" (onShown)="onShown(repPre.presentationName, personMark.mark.rating)" class="text-center" containerClass="mark-popover">
+          <span *ngIf="personMark.mark.rating">
+            {{personMark.mark.rating?.level}}
+          </span>
+          <span *ngIf="!personMark.mark.rating"  class="no-mark"> - </span>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div class="footer" (click)="bsModalRef.hide()">
+    Закрыть
+  </div>
+</div>
+
+<ng-template #infoPopover>
+  <div [innerHtml]="markInfo"></div>
+</ng-template>

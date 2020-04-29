@@ -1,0 +1,18 @@
+.wrap {
+  padding: 2px 10px;
+  margin: 10px;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, .15);
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.icon {
+    width: 40px;
+    height: 40px;
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+}

@@ -1,1 +1,21 @@
-<p>home works!</p>
+<div class="wrap" @translateYAnimation>
+  <div class="logo"></div>
+  <div class="enter" *ngIf="!user">
+    <div class="enter-btn" *ngIf="!formVisible">
+      <button (click)="showForm()">Вход</button>
+    </div>
+    <div class="enter-form">
+      <div class="not-valid" *ngIf="formVisible && notValid">
+        <div class="not-valid-inner">
+          Неверные данные
+        </div>
+      </div>
+      <app-enter-form *ngIf="formVisible" @translateYAnimation (login)="login($event)"></app-enter-form>
+    </div>
+  </div>
+  <div class="token">
+    <div class="token-inner">
+      {{user | json}}
+    </div>
+  </div>
+</div>

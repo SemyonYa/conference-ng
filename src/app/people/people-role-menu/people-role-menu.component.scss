@@ -1,0 +1,28 @@
+.role {
+  width: 150px;
+  padding: 3px 10px;
+  background-color: var(--color-lightgrey);
+  border: solid 1px var(--color-secondary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  transition: .3s;
+  cursor: pointer;
+
+  &:first-child {
+    border-top-left-radius: 9px;
+    border-bottom-left-radius: 9px;
+  }
+
+  &:last-child {
+    border-top-right-radius: 9px;
+    border-bottom-right-radius: 9px;
+  }
+
+  &.active {
+    background-color: var(--color-primary);
+    color: var(--color-lightgrey);
+    border-color: var(--color-primary);
+  }
+}

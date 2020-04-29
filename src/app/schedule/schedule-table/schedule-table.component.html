@@ -1,5 +1,5 @@
-<div class="table-wrap">
-  <h2>Расписание</h2>
+<div class="table-wrap" @translateYAnimation>
+  <h2 class="title">Расписание</h2>
   <table>
     <tbody *ngFor="let schDate of scheduleDates">
       <tr class="date">
@@ -12,10 +12,9 @@
           <p>{{sch.place}}</p>
         </td>
         <td>
-          <span *ngIf="sch.presentations.length > 0">info</span>
+          <div class="info" *ngIf="sch.presentations.length > 0" (click)="showInfo(sch)" title="Список докладов"></div>
         </td>
       </tr>
     </tbody>
   </table>
-
 </div>

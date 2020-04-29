@@ -1,1 +1,13 @@
-<pre>{{ ratingsWithMark | json }}</pre>
+<div class="wrap">
+  <div class="description">
+    <h5>Заметка</h5>
+    <textarea #descriptionElem cols="30" rows="10" value="{{mark?.description}}"></textarea>
+  </div>
+  <div class="marks">
+    <label for="mark{{rating.id}}" *ngFor="let rating of ratings" (click)="selectRating(rating.id)">
+      <span>{{rating.name ? rating.name : rating.level}}</span>
+      <input type="radio" name="mark" id="mark{{rating.id}}" value="{{rating.value}}" [checked]="mark?.ratingId === rating.id">
+    </label>
+  </div>
+
+</div>

@@ -1,0 +1,12 @@
+<div class="wrap">
+  <div class="header">
+    <div class="name">{{doc.name}}</div>
+    <div class="close" (click)="bsModalRef.hide()"></div>
+  </div>
+  <div class="doc-wrap">
+    <iframe [src]="doc.path | safe" frameborder="0"></iframe>
+  </div>
+  <div class="footer" (click)="bsModalRef.hide()">
+    Закрыть
+  </div>
+</div>

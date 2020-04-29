@@ -1,1 +1,11 @@
-<p>{{person.surname + ' ' + person.name + ' ' + person.name2}}</p>
+<div class="wrap">
+  <div class="photo" [ngStyle]="{backgroundImage: 'url(' + person.thumb + ')'}"></div>
+  <p class="name">
+    <strong>{{person.surname}}</strong>
+    <br>
+    <span>{{person.name + ' ' + person.name2}}</span>
+  </p>
+  <p class="org">{{person.organization}}</p>
+  <p class="vocation">{{person.vocation}}</p>
+  <!-- <p class="info">{{person.info}}</p> -->
+</div>

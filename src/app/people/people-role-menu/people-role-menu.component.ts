@@ -8,6 +8,7 @@ import { PersonRole } from 'src/app/_models/person-role';
 })
 export class PeopleRoleMenuComponent implements OnInit {
   @Input() roles: PersonRole[];
+  @Input() activeRoleId: number;
   @Output() activate = new EventEmitter<number>();
 
   constructor() { }

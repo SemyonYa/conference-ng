@@ -1,0 +1,5 @@
+<form [formGroup]="form" (ngSubmit)="submit()">
+    <input type="text" formControlName="login" placeholder="логин" autofocus>
+    <input type="password" formControlName="password" placeholder="пароль">
+    <button type="submit" [disabled]="form.invalid">Ок</button>
+</form>

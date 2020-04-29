@@ -1,11 +1,28 @@
-<div class="wrap">
-
+<div class="wrap" @translateYAnimation *ngIf="presentation">
+  <div class="wrap-left">
+    <div class="back-btn-wrap">
+      <div class="back-btn" [routerLink]="['/presentation']">...в список</div>
+    </div>
+    <app-presentation-full-current *ngIf="isCompere" [presentation]="presentation" (changeCurrent)="changeCurrent($event)"></app-presentation-full-current>
     <app-presentation-full-info [presentation]="presentation"></app-presentation-full-info>
+    <hr>
     <div class="docs">
-        <app-presentation-full-doc *ngFor="let doc of presentation?.docs" [doc]="doc"></app-presentation-full-doc>
+      <h4>Документы</h4>
+      <app-presentation-full-doc *ngFor="let doc of presentation?.docs" [doc]="doc"></app-presentation-full-doc>
+      <div class="no-docs" *ngIf="presentation?.docs.length === 0">Нет документов</div>
     </div>
+    <hr>
+    <app-presentation-full-marks [ratings]="ratings" [mark]="mark" (setMark)="setMark($event)" *ngIf="isJury">
+    </app-presentation-full-marks>
+    <div class="alert" @onOpacityAnimation *ngIf="savedVisible">
+      <span class="alert-inner">Сохранено</span>
+    </div>
+  </div>
+  <div class="wrap-right">
     <div class="people">
-        <app-presentation-full-person *ngFor="let person of presentation?.people" [person]="person"></app-presentation-full-person>
+      <app-presentation-full-person *ngFor="let person of presentation?.people" [person]="person"
+        (click)="showPerson(person)">
+      </app-presentation-full-person>
     </div>
-    <app-presentation-full-marks [ratingsWithMark]="ratingsWithMark"></app-presentation-full-marks>
+  </div>
 </div>

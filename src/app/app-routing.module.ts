@@ -6,15 +6,16 @@ import { ScheduleTableComponent } from './schedule/schedule-table/schedule-table
 import { PresentationListComponent } from './presentations/presentation-list/presentation-list.component';
 import { PhotoListComponent } from './galery/photo-list/photo-list.component';
 import { PresentationFullComponent } from './presentations/presentation-full/presentation-full.component';
+import { InGuard } from './_guards/in.guard';
 
 
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
-  { path: 'people', component: PeopleIndexComponent },
-  { path: 'schedule', component: ScheduleTableComponent },
-  { path: 'presentation', component: PresentationListComponent },
-  { path: 'presentation/:id', component: PresentationFullComponent },
-  { path: 'galery', component: PhotoListComponent}
+  { path: 'people', component: PeopleIndexComponent, canActivate: [InGuard] },
+  { path: 'schedule', component: ScheduleTableComponent, canActivate: [InGuard] },
+  { path: 'presentation', component: PresentationListComponent, canActivate: [InGuard] },
+  { path: 'presentation/:id', component: PresentationFullComponent, canActivate: [InGuard] },
+  { path: 'galery', component: PhotoListComponent, canActivate: [InGuard] }
 ];
 
 @NgModule({

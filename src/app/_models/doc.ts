@@ -1,3 +1,5 @@
+import { environment } from 'src/environments/environment';
+
 export class Doc {
     id: number;
     name: string;
@@ -9,7 +11,7 @@ export class Doc {
         this.id = Number.parseInt(id);
         this.name = name;
         this.description = description;
-        this.path = path;
+        this.path = environment.docPath + path;
         this.extension = extension;
     }
 }

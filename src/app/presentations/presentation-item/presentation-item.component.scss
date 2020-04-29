@@ -1,0 +1,27 @@
+.wrap {
+  //   width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, .15);
+  padding: 10px;
+  margin: 10px;
+  padding: 10px;
+  cursor: pointer;
+
+  &.current {
+    border: solid 2px var(--color-primary);
+    border-left-width: 15px;
+  }
+
+  h5 {
+    font-size: 22px;
+    margin: 5px;
+    color: #333;
+}
+
+h6 {
+    font-size: 18px;
+    text-transform: uppercase;
+    margin: 5px;
+    color: var(--color-secondary);
+  }
+}

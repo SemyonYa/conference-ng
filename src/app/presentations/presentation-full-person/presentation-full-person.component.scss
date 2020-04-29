@@ -1,0 +1,44 @@
+* {
+    --img-size: 250px;
+}
+.wrap {
+    width: var(--img-size);
+    box-shadow: 0 0 10px 0 rgba(0,0,0,.15);
+    margin: 10px;
+    border-radius: 10px;
+    text-align: center;
+    padding-bottom: 10px;
+    cursor: pointer;
+    
+    .photo {
+        width: var(--img-size);
+        height: var(--img-size);
+        background-size: cover;
+        background-position: center center;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+    }
+
+    p {
+        margin: 7px;
+        line-height: 1;
+    }
+
+    .name {
+        color: var(--color-primary);
+
+        strong {
+            text-transform: uppercase;
+        }
+    }
+
+    .org {
+        color: var(--color-secondary);
+        font-weight: 600;
+    }
+
+    .vocation {
+        // font-style: italic;
+    }
+
+}

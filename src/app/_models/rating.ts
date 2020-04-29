@@ -8,4 +8,8 @@ export class Rating {
         this.level = Number.parseInt(level);
         this.name = name;
     }
+
+    out() {
+        return this.name ? this.name : this.level;
+    }
 }
